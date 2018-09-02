@@ -1,0 +1,91 @@
+#version 330 core
+
+// Input data from vertex shader.
+in vec3 fragmentColor;
+in vec3 ModelPos;
+in vec3 ModelNorm;
+in vec2 ST;
+
+//Uniforms
+uniform int TheColor;
+uniform vec3 AmbLight;
+uniform vec3 LightPos;
+uniform vec3 DiffLight;
+uniform vec3 EyePos;
+uniform float Material;
+uniform sampler2D textureSampler;
+uniform int FlashLightBool;
+
+// Ouput data
+out vec3 FinalColor;
+
+
+float calcdist(vec3 v1, vec3 v2)
+{
+	vec3 v;
+	v.x = v1.x - v2.x;
+	v.y = v1.y - v2.y;
+	v.z = v1.z - v2.z;
+	return sqrt(v.x*v.x + v.y*v.y + v.z*v.z);
+}
+
+
+int LookingAt(vec3 v1, vec3 v2)
+{
+	if (normalize(v1) == normalize(v2))
+		return 1;
+	else
+		return 0;
+}
+
+void main()
+{
+	vec3 A;
+	vec3 D;
+	vec3 S;
+
+	vec3 color;
+	float Intensity = 70;
+	
+	if (TheColor == 0)
+		color = vec3(1, 1, 1);
+	else if (TheColor == 1)
+		color = vec3(1, 0.5f, 0);
+	else if (TheColor == 2)
+		color = vec3(0, 1, 0);
+	else if (TheColor == 3)
+		color = vec3(1, 1, 0);
+	else if (TheColor == 4)
+		color = vec3(0, 1, 1);
+	else if (TheColor == 5)
+		color = vec3(0.5f, 0, 1);
+	else if (TheColor == 6)
+		color = vec3(0.5f, 0.32f, 0.3f);
+	else if (TheColor == 7)
+		color = vec3(0.4f, 0.2f, 0.1f);
+	else
+		 color = texture(textureSampler, ST).rgb;
+
+
+	
+
+	A = color * AmbLight;
+
+	vec3 Pos = normalize(LightPos - ModelPos);
+	D = DiffLight * color * clamp(dot(ModelNorm, Pos), 0, 1);
+
+	
+
+	vec3 Pos2 = normalize(LightPos - ModelPos);
+	vec3 R = reflect(-Pos2, ModelNorm);
+	float Distance = calcdist(LightPos, ModelPos);
+	Intensity /= Distance;
+	Distance /= 4;
+
+	if(FlashLightBool == 1)
+		S = DiffLight * Intensity * color * clamp(pow(dot(R, Pos), Material * Distance), 0, 1);
+
+
+	vec3 I = A + D + S;
+	FinalColor = I;
+}

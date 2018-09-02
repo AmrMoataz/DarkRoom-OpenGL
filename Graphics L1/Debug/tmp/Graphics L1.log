@@ -1,0 +1,14 @@
+﻿  Skipping... (no relevant changes detected)
+  Renderer.cpp
+  FirstPersonCamera.cpp
+  stb_image.c
+d:\amrmoataz--w\projects\opengl\project template 3.3\graphics l1\stb_image.c(300): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+d:\amrmoataz--w\projects\opengl\project template 3.3\graphics l1\stb_image.c(362): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+d:\amrmoataz--w\projects\opengl\project template 3.3\graphics l1\stb_image.c(400): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+d:\amrmoataz--w\projects\opengl\project template 3.3\graphics l1\stb_image.c(4298): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(205): note: see declaration of 'fopen'
+  Graphics L1.vcxproj -> D:\AmrMoataz--W\Projects\OpenGL\Project Template 3.3\Debug\Graphics L1.exe
+  Graphics L1.vcxproj -> D:\AmrMoataz--W\Projects\OpenGL\Project Template 3.3\Debug\Graphics L1.pdb (Full PDB)
